@@ -7,7 +7,7 @@ export default function UserLayout() {
 
         <Navbar />
 
-        <main className="dark:bg-black dark:text-white">
+        <main className="dark:bg-black dark:text-white mt-1">
             <Outlet />
         </main>
 
