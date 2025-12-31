@@ -1,20 +1,9 @@
 
-import { useEffect } from "react"
-import { useTheme } from "../hooks/useTheme";
 
 
 
 const Home: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    console.log("sherif");
-    console.log(localStorage.getItem("theme"));
-  }, [theme]);
-
-  useEffect(() => {
-    console.log(window.document.documentElement.classList);
-  }, [theme]);
 
   return (
     <>
