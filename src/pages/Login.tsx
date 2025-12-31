@@ -2,7 +2,7 @@
 import { Formik } from "formik";
 import { useState } from "react";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import { Moon, Sun } from "lucide-react";
 
@@ -104,8 +104,11 @@ const Login: React.FC = () => {
                             </div>
                             {notFound && <div className="text-center text-red-700 mb-3">{notFound}</div>}
                             <div className="flex justify-center gap-3">
-                                <button type="submit" className="px-5 py-2 bg-blue-700 rounded-lg text-white hover:bg-white hover:border-2 hover:border-blue-700 hover:text-blue-700 transition-all " disabled={isSubmitting}>{isSubmitting ? 'Loading...' : 'Submit'}</button>
+                                <button type="submit" className="px-5 py-2 bg-blue-700 rounded-lg text-white hover:bg-white hover:border-2 hover:border-blue-700 hover:text-blue-700 transition-all " disabled={isSubmitting}>{isSubmitting ? 'Loading...' : 'Login'}</button>
                                 <button type="button" className="px-5 py-2 rounded-lg text-blue-700 border-2 border-blue-700 hover:text-white hover:bg-blue-700 transition-all" onClick={goToSignPage}>Sign In</button>
+                            </div>
+                            <div className="text-center mt-3 "> 
+                                <Link to='/resetpassword' className=" text-blue-600 hover:underline transition-all">Forgot password?</Link>
                             </div>
                         </form>
                     )}

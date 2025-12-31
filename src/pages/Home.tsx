@@ -1,5 +1,5 @@
 
-import { useEffect} from "react"
+import { useEffect } from "react"
 import { useTheme } from "../hooks/useTheme";
 
 
@@ -21,7 +21,11 @@ const Home: React.FC = () => {
 
       <section className={`h-screen bg-light-tart dark:bg-dark-ogin`}>
         <h1 className="text-center m-4 font-bold text-4xl text-maroon dark:text-white">Home pages</h1>
-        <button onClick={toggleTheme}>Toggle Theme</button>
+
+
+
+
+
       </section>
     </>
   );

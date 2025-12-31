@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
 import UserLayout from "./components/layout/userLayout/UserLayout";
 import Search from "./pages/Search";
+import ResetPassword from "./components/forms/ResetPassword";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
 <Routes>
   <Route path="/" element={<Login />} />
   <Route path="/signin" element={<SignIn />} />
+  <Route path="/resetpassword" element={<ResetPassword />} />
   <Route path="/user" element={<UserLayout />}>
     <Route path="home" element={<Home />} />
     <Route path="test" element={<TestPage />} />
