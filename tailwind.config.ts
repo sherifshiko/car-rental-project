@@ -15,12 +15,12 @@ const config: Config = {
 
 
       backgroundImage: {
-        'light-start': "url('./start.jpg')",
-        'dark-Login': "url('./Login.jpg')",
-        "dark-car":"url('./login-dark.jpg')",
-        "light-car":"url('./login-white.avif')",
-        "signin-light":"url('./sign-in-light.jpg')",
-        "signin-dark":"url('./sign-in-dark.webp')",
+        'light-start': "url('./src/assets/images//start.jpg')",
+        'dark-Login': "url('./src/assets/images//Login.jpg')",
+        "dark-car":"url('./src/assets/images//login-dark.jpg')",
+        "light-car":"url('./src/assets/images//login-white.avif')",
+        "signin-light":"url('./src/assets/images//sign-in-light.jpg')",
+        "signin-dark":"url('./src/assets/images//sign-in-dark.webp')",
       }
     }
   },
