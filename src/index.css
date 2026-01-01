@@ -1,4 +1,8 @@
+
+
+
 @import "tailwindcss";
+
 
 @config '../tailwind.config.ts';
 
@@ -7,6 +11,38 @@
     --maroon: '#750E21';
 
 }
+
+
+
+.light-start {
+    background-image: url('./assets/sign-in-light.jpg');
+}
+
+.dark-Login {
+    background-image: url('./assets/login-white.avif');
+}
+
+.dark-car {
+    background-image: url('./assets/login-dark.jpg');
+}
+
+
+.light-car {
+    background-image: url('./assets/login-white.avif');
+}
+
+.signin-light {
+    background-image: url('./assets/sign-in-light.jpg');
+}
+
+.signin-dark {
+   background-image: url('./assets/sign-in-dark.webp');
+}
+
+
+
+
+
 
 
 .test {
@@ -35,27 +71,3 @@
 }
 
 
-
-.light-start {
-    background-image: url('./src/assets/start.jpg');
-}
-
-.dark-Login {
-    background-image: url('./src/assets/Login.jpg');
-}
-
-.dark-car {
-    background-image: url('./src/assets/login-dark.jpg');
-}
-
-.light-car {
-    background-image: url('./src/assets/login-white.avif');
-}
-
-.signin-light {
-    background-image: url('./src/assets/sign-in-light.jpg');
-}
-
-.signin-dark {
-   background-image: url('./src/assets/sign-in-dark.webp');
-}
