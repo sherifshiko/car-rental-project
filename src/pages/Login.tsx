@@ -12,7 +12,7 @@ interface FormType {
 }
 
 const Login: React.FC = () => {
-    const { theme, toggleTheme } = useTheme()
+    const { theme, toggleTheme,isDark } = useTheme()
     const [notFound, setNotFound] = useState('');
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <section className={`h-screen bg-light-car dark:bg-dark-car bg-cover dark:text-white flex items-center overflow-x-hidden`}>
+        <section className={`h-screen  bg-cover dark:text-white flex items-center overflow-x-hidden ${isDark?'dark-car':'light-car'}`}>
             <div className="md:ms-40 md:w-1/4 h-screen w-screen  border-2 md:h-fit p-3 rounded-lg shadow-2xl shadow-gray-500">
                 <div>
                     <h1 className="text-center font-bold text-4xl mb-3">Login <button className="cursor-pointer" onClick={toggleTheme}>{theme && theme === "dark" ? <Sun color="yellow" /> : <Moon className="shadow-xl shadow-neutral-600 rounded-xl" />} </button></h1>

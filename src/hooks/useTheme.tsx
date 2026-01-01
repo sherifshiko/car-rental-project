@@ -8,12 +8,16 @@ export const useTheme = () => {
     return storedTheme === "dark" || storedTheme === "light" ? storedTheme as Theme : "light";
   });
 
+  const[isDark,setIsDark]=useState<boolean>(false)
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark")
+      setIsDark(true)
     } else {
       root.classList.remove("dark")
+      setIsDark(false)
     }
     localStorage.setItem("theme", theme)
   }, [theme])
@@ -25,5 +29,5 @@ export const useTheme = () => {
   const setDark = (): void => setTheme("dark");
   const setLight = (): void => setTheme("light");
 
-  return { theme, setDark, setLight, toggleTheme }
+  return { theme, setDark, setLight, toggleTheme,isDark }
 }
