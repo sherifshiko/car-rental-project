@@ -37,25 +37,25 @@
 
 
 .light-start {
-    background-image: url('./src/assets/images//start.jpg');
+    background-image: url('./src/assets/start.jpg');
 }
 
 .dark-Login {
-    background-image: url('./src/assets/images//Login.jpg');
+    background-image: url('./src/assets/Login.jpg');
 }
 
 .dark-car {
-    background-image: url('./src/assets/images//login-dark.jpg');
+    background-image: url('./src/assets/login-dark.jpg');
 }
 
 .light-car {
-    background-image: url('./src/assets/images//login-white.avif');
+    background-image: url('./src/assets/login-white.avif');
 }
 
 .signin-light {
-    background-image: url('./src/assets/images//sign-in-light.jpg');
+    background-image: url('./src/assets/sign-in-light.jpg');
 }
 
 .signin-dark {
-   background-image: url('./src/assets/images//sign-in-dark.webp');
+   background-image: url('./src/assets/sign-in-dark.webp');
 }
