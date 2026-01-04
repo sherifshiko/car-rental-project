@@ -17,8 +17,13 @@ const appRouts:routesTpes []= [
     }
     ,
     {
-        title:'Test',
-        href:'test',
+        title:'Booking',
+        href:'booking',
+    }
+    ,
+    {
+        title:'',
+        href:'page:',
     }
     
 ]
