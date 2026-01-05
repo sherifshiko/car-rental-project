@@ -7,6 +7,7 @@ import UserLayout from "./components/layout/userLayout/UserLayout";
 import Search from "./pages/Search";
 import ResetPassword from "./components/forms/ResetPassword";
 import Booking from "./pages/Booking";
+import AdminLayOut from "./components/layout/adminLayOut/AdminLayOut";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,9 @@ const App: React.FC = () => {
     <Route path="home" element={<Home />} />
     <Route path="booking" element={<Booking />} />
     <Route path="search" element={<Search />} />
+  </Route>
+  <Route path="/admin" element={<AdminLayOut />} >
+   <Route path="home" element={<Home />} />
   </Route>
 </Routes>
   );

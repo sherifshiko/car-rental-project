@@ -44,7 +44,7 @@ const Login: React.FC = () => {
                         setNotFound('');
                         setTimeout(() => {
                             if (values.user_email === 'admin@admin.com' && values.password === '123') {
-                                alert('hello admin')
+                                navigate('/admin/home')
                             } else {
 
                                 let allInformations = localStorage.getItem('userInformation') || '[]';
@@ -60,7 +60,6 @@ const Login: React.FC = () => {
 
                                 }
 
-
                                 let email = localStorage.getItem('email')
                                 let password = localStorage.getItem('password')                                
                                 if (JSON.stringify(values.user_email) === email && JSON.stringify(values.password) === password) {
@@ -73,7 +72,7 @@ const Login: React.FC = () => {
 
 
                             setSubmitting(false)
-                        }, 1000);
+                        }, 500);
                     }}
                 >
                     {({ values, handleBlur, handleChange, errors, touched, handleSubmit, isSubmitting }) => (
