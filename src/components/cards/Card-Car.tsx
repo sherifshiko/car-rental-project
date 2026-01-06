@@ -7,7 +7,7 @@ const CardCar: React.FC<{ cardData: CarsPropsType }> = ({ cardData }) => {
     const {car_image,car_name,car_color,car_model,car_price_day,id} = cardData
 
     return <>
-        <div className="shadow-2xl shadow-gray-400">
+        <div className="shadow-2xl shadow-gray-400 relative">
             <div className="">
                 <img src={car_image} alt={car_name} className="h-75 w-full rounded-t-2xl " />
             </div>
@@ -15,7 +15,7 @@ const CardCar: React.FC<{ cardData: CarsPropsType }> = ({ cardData }) => {
                 <h2 className={`text-2xl text-${car_color}-600`}>{car_name}</h2>
                 <span className="text-amber-300">{car_model}</span>
                 <h3 className="text-green-500">{car_price_day} $</h3>
-                <FavBtn car_id={id} />
+                <div className="absolute top-10 right-10 cursor-pointer"><FavBtn car_id={id}/></div>
             </div>
         </div>
 
