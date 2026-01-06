@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
 
     return <>
 
-        <nav className=" px-6 bg-gray-400 py-3 flex justify-between items-center text-white dark:bg-black">
+        <nav className=" px-6 bg-gray-400 py-3 flex justify-between items-center text-white dark:bg-black sticky z-50 w-full top-0 left-0">
             <div className="lg:flex items-center lg:justify-start lg:gap-12 lg:w-full lg:px-6 lg:relative">
                 <Logo />
                 <div className="">
