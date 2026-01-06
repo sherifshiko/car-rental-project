@@ -21,6 +21,9 @@ const config: Config = {
         "light-car":"url('./assets/login-white.avif')",
         "signin-light":"url('./assets/sign-in-light.jpg')",
         "signin-dark":"url('./assets/sign-in-dark.webp')",
+        "Not-Found-background":"url('./assets/not-found/the background.jpg')",
+        "Not-Found-icon":"url('./assets/not-found/the icon.png')",
+        "Not-Found-text":"url('./assets/not-found/the text.png')",
       }
     }
   },

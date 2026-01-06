@@ -8,6 +8,7 @@ import Search from "./pages/Search";
 import ResetPassword from "./components/forms/ResetPassword";
 import Booking from "./pages/Booking";
 import AdminLayOut from "./components/layout/adminLayOut/AdminLayOut";
+import NotFound from "./components/notFound/NotFound";
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   <Route path="/admin" element={<AdminLayOut />} >
    <Route path="home" element={<Home />} />
   </Route>
+  <Route path="*" element={<NotFound />}/>
 </Routes>
   );
 };
