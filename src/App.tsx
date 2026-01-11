@@ -9,6 +9,7 @@ import ResetPassword from "./components/forms/ResetPassword";
 import Booking from "./pages/Booking";
 import AdminLayOut from "./components/layout/adminLayOut/AdminLayOut";
 import NotFound from "./components/notFound/NotFound";
+import ControlPanel from "./pages/ControlPanel";
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   </Route>
   <Route path="/admin" element={<AdminLayOut />} >
    <Route path="home" element={<Home />} />
+   <Route path="controlpanel" element={<ControlPanel />} />
   </Route>
   <Route path="*" element={<NotFound />}/>
 </Routes>

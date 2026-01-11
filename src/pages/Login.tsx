@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import { Moon, Sun } from "lucide-react";
+import axios from "axios";
 
 interface FormType {
     user_email: string,
@@ -12,7 +13,7 @@ interface FormType {
 }
 
 const Login: React.FC = () => {
-    const { theme, toggleTheme,isDark } = useTheme()
+    const { theme, toggleTheme, isDark } = useTheme()
     const [notFound, setNotFound] = useState('');
     const navigate = useNavigate();
 
@@ -32,7 +33,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <section className={`h-screen  bg-cover dark:text-white flex items-center overflow-x-hidden ${isDark?'dark-car':'light-car'}`}>
+        <section className={`h-screen  bg-cover dark:text-white flex items-center overflow-x-hidden ${isDark ? 'dark-car' : 'light-car'}`}>
             <div className="md:ms-40 md:w-1/4 h-screen w-screen  border-2 md:h-fit p-3 rounded-lg shadow-2xl shadow-gray-500">
                 <div>
                     <h1 className="text-center font-bold text-4xl mb-3">Login <button className="cursor-pointer" onClick={toggleTheme}>{theme && theme === "dark" ? <Sun color="yellow" /> : <Moon className="shadow-xl shadow-neutral-600 rounded-xl" />} </button></h1>
@@ -43,8 +44,22 @@ const Login: React.FC = () => {
                     onSubmit={(values, { setSubmitting }) => {
                         setNotFound('');
                         setTimeout(() => {
-                            if (values.user_email === 'admin@admin.com' && values.password === '123') {
-                                navigate('/admin/home')
+                            if (values.user_email === 'shefo@shefo.com' && values.password === '123456') {
+                                axios.post('https://demo.tourcode.online/api/auth/login', {
+                                    email: 'shefo@shefo.com',
+                                    password: '123456'
+                                }, {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                    }
+                                })
+                                    .then(response => {
+                                        let token = response.data.token;
+                                        localStorage.setItem("token",token)
+                                        navigate('/admin/home');
+                                    })
+                                    .catch(error => console.error(error));
+
                             } else {
 
                                 let allInformations = localStorage.getItem('userInformation') || '[]';
@@ -61,7 +76,7 @@ const Login: React.FC = () => {
                                 }
 
                                 let email = localStorage.getItem('email')
-                                let password = localStorage.getItem('password')                                
+                                let password = localStorage.getItem('password')
                                 if (JSON.stringify(values.user_email) === email && JSON.stringify(values.password) === password) {
                                     alert('hello user')
                                 } else {
@@ -106,7 +121,7 @@ const Login: React.FC = () => {
                                 <button type="submit" className="px-5 py-2 bg-blue-700 rounded-lg text-white hover:bg-white hover:border-2 hover:border-blue-700 hover:text-blue-700 transition-all " disabled={isSubmitting}>{isSubmitting ? 'Loading...' : 'Login'}</button>
                                 <button type="button" className="px-5 py-2 rounded-lg text-blue-700 border-2 border-blue-700 hover:text-white hover:bg-blue-700 transition-all" onClick={goToSignPage}>Sign In</button>
                             </div>
-                            <div className="text-center mt-3 "> 
+                            <div className="text-center mt-3 ">
                                 <Link to='/resetpassword' className=" text-blue-600 hover:underline transition-all">Forgot password?</Link>
                             </div>
                         </form>
