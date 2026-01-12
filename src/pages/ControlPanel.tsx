@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 interface CarData {
-    id: number
     name: string;
     brand: string;
-    model: number;
-    year: number;
-    price_per_day: number;
+    model: number | null;
+    year: number | null;
+    price_per_day: number | null;
     description: string;
     image: string;
     location: string;
@@ -18,21 +17,21 @@ interface CarData {
 const carSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     brand: Yup.string().required('Brand is required'),
-    model: Yup.number().required('Model is required'),
-    year: Yup.number().required('Year is required'),
-    price_per_day: Yup.number().required('Price per day is required'),
+    model: Yup.number().nullable().required('Model is required'),
+    year: Yup.number().nullable().required('Year is required'),
+    price_per_day: Yup.number().nullable().required('Price per day is required'),
     description: Yup.string().required('Description is required'),
+    image: Yup.string().url('Invalid URL').required('Image URL is required'),
     location: Yup.string().required('Location is required')
 });
 
-const ControlPanel: React.FC<CarData> = () => {
-    const [carData, setCarData] = useState({
-        id: "",
+const ControlPanel: React.FC = () => {
+    const [carData, _] = useState<CarData>({
         name: "",
         brand: "",
-        model: "",
-        year: "",
-        price_per_day: "",
+        model: null,
+        year: null,
+        price_per_day: null,
         description: "",
         image: "",
         location: ""
@@ -46,7 +45,7 @@ const ControlPanel: React.FC<CarData> = () => {
                 <Formik
                     initialValues={carData}
                     validationSchema={carSchema}
-                    onSubmit={(values) => {
+                    onSubmit={(values ,{resetForm}) => {
                         let token = localStorage.getItem("token");
                         axios.post('https://demo.tourcode.online/api/cars', values, {
                             headers: {
@@ -54,25 +53,16 @@ const ControlPanel: React.FC<CarData> = () => {
                                 'Authorization': `Bearer ${token}`
                             }
                         })
-                            .then(response => console.log(response.data))
+
+                            .then(response => {
+                                console.log(response.data);
+                                resetForm();
+                            })
                             .catch(error => console.error(error));
                     }}
                 >
-                    {({ values, handleBlur, handleChange, errors, touched, handleSubmit, isSubmitting }) => (
+                    {({ values, handleBlur, handleChange, errors, touched, handleSubmit }) => (
                         <form className="w-1/2" onSubmit={handleSubmit}>
-
-                            <div className="mb-3">
-                                <input
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    value={values.id}
-                                    name="id"
-                                    type="text"
-                                    placeholder="Enter The Car id"
-                                    className={`rounded-lg border-2 focus:outline-none focus:border-blue-700 p-2 w-full mb-3 ${errors.id && touched.id && 'border-red-700'}`}
-                                />
-                                {errors.id && touched.id && errors.id ? <div className="text-red-600">{errors.id}</div> : null}
-                            </div>
 
                             <div className="mb-3">
                                 <input
@@ -104,7 +94,7 @@ const ControlPanel: React.FC<CarData> = () => {
                                 <input
                                     onBlur={handleBlur}
                                     onChange={handleChange}
-                                    value={values.model}
+                                    value={values.model ?? ''}
                                     name="model"
                                     type="text"
                                     placeholder="Enter The Car Model"
@@ -117,7 +107,7 @@ const ControlPanel: React.FC<CarData> = () => {
                                 <input
                                     onBlur={handleBlur}
                                     onChange={handleChange}
-                                    value={values.year}
+                                    value={values.year ?? ''}
                                     name="year"
                                     type="text"
                                     placeholder="Enter The Car Year"
@@ -130,7 +120,7 @@ const ControlPanel: React.FC<CarData> = () => {
                                 <input
                                     onBlur={handleBlur}
                                     onChange={handleChange}
-                                    value={values.price_per_day}
+                                    value={values.price_per_day ?? ''}
                                     name="price_per_day"
                                     type="text"
                                     placeholder="Enter The Car Price per day"
