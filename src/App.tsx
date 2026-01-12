@@ -10,6 +10,9 @@ import Booking from "./pages/Booking";
 import AdminLayOut from "./components/layout/adminLayOut/AdminLayOut";
 import NotFound from "./components/notFound/NotFound";
 import ControlPanel from "./pages/ControlPanel";
+import AddCar from "./components/cars-control/AddCar";
+import DeleteCar from "./components/cars-control/DeleteCar";
+import UpdateCar from "./components/cars-control/UpdateCar";
 
 const App: React.FC = () => {
   return (
@@ -25,7 +28,11 @@ const App: React.FC = () => {
   </Route>
   <Route path="/admin" element={<AdminLayOut />} >
    <Route path="home" element={<Home />} />
-   <Route path="controlpanel" element={<ControlPanel />} />
+   <Route path="controlpanel" element={<ControlPanel />}>
+   <Route path="add-car" element={<AddCar />} />
+   <Route path="delete-car" element={<DeleteCar />} />
+   <Route path="update-car" element={<UpdateCar />} />
+   </Route>
   </Route>
   <Route path="*" element={<NotFound />}/>
 </Routes>
