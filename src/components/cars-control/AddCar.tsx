@@ -2,17 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import type { CarData } from "../../interfaces/CarData";
 
-interface CarData {
-    name: string;
-    brand: string;
-    model: number | null;
-    year: number | null;
-    price_per_day: number | null;
-    description: string;
-    image: string;
-    location: string;
-}
+
 
 const carSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -28,6 +20,7 @@ const carSchema = Yup.object().shape({
 
 const AddCar: React.FC = () => {
     const [carData, _] = useState<CarData>({
+        id:null,
         name: "",
         brand: "",
         model: null,
