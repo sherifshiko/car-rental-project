@@ -13,29 +13,34 @@ import ControlPanel from "./pages/ControlPanel";
 import AddCar from "./components/cars-control/AddCar";
 import DeleteCar from "./components/cars-control/DeleteCar";
 import UpdateCar from "./components/cars-control/UpdateCar";
+import ViewCar from "./components/cards/ViewCar";
+import HomeAdmin from "./pages/HomeAdmin";
 
 const App: React.FC = () => {
   return (
 
-<Routes>
-  <Route path="/" element={<Login />} />
-  <Route path="/signin" element={<SignIn />} />
-  <Route path="/resetpassword" element={<ResetPassword />} />
-  <Route path="/user" element={<UserLayout />}>
-    <Route path="home" element={<Home />} />
-    <Route path="booking" element={<Booking />} />
-    <Route path="search" element={<Search />} />
-  </Route>
-  <Route path="/admin" element={<AdminLayOut />} >
-   <Route path="home" element={<Home />} />
-   <Route path="controlpanel" element={<ControlPanel />}>
-   <Route path="add-car" element={<AddCar />} />
-   <Route path="delete-car" element={<DeleteCar />} />
-   <Route path="update-car" element={<UpdateCar />} />
-   </Route>
-  </Route>
-  <Route path="*" element={<NotFound />}/>
-</Routes>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/resetpassword" element={<ResetPassword />} />
+      <Route path="/user" element={<UserLayout />}>
+        <Route path="home" element={<Home />} />
+        <Route path="booking" element={<Booking />} />
+        <Route path="search" element={<Search />} />
+        <Route path="viewcar/:id" element={<ViewCar />} />
+
+      </Route>
+      <Route path="/admin" element={<AdminLayOut />} >
+        <Route path="home" element={<HomeAdmin />} />
+        <Route path="controlpanel" element={<ControlPanel />}>
+          <Route path="add-car" element={<AddCar />} />
+          <Route path="delete-car" element={<DeleteCar />} />
+          <Route path="update-car" element={<UpdateCar />} />
+          <Route path="viewcar/:id" element={<ViewCar />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

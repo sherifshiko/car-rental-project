@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import type { CarData } from "../../interfaces/CarData";
-import FavBtn from "../buttons/FavBtn";
 
 
-const CardCar: React.FC<{ cardData: CarData }> = ({ cardData }) => {
+const CardCarAdmin: React.FC<{ cardData: CarData }> = ({ cardData }) => {
 
     const { id, name, image, model, price_per_day } = cardData
 
@@ -16,9 +15,8 @@ const CardCar: React.FC<{ cardData: CarData }> = ({ cardData }) => {
                 <h2 className={`text-2xl `}>{name}</h2>
                 <span className="text-red-900">{model}</span>
                 <h3 className="text-green-500">{price_per_day} $</h3>
-                <div className="absolute top-10 right-10 cursor-pointer"><FavBtn car_id={id} /></div>
                 <div className="p-3">
-                    <Link to={`/user/viewcar/${id}`} className="bg-amber-400 px-3 py-2 rounded-xl">View Car</Link>
+                    <Link to={`/admin/controlpanel/viewcar/${id}`} className="bg-amber-400 px-3 py-2 rounded-xl">View Car</Link>
                 </div>
             </div>
         </div>
@@ -27,4 +25,4 @@ const CardCar: React.FC<{ cardData: CarData }> = ({ cardData }) => {
     </>
 }
 
-export default CardCar;
+export default CardCarAdmin;
