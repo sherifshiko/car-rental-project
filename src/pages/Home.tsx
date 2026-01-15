@@ -1,24 +1,9 @@
-import { useContext, useEffect } from "react";
-import cars from "../api/dummy-api";
+import { useContext} from "react";
 import CardCar from "../components/cards/Card-Car";
-import axios from "axios";
 import { ListCarsContext } from "../context/ListCarsContext";
 
 const Home: React.FC = () => {
-
   const {listCars}=useContext(ListCarsContext)
-
-  // useEffect(() => {
-  //   let token = localStorage.getItem("token")
-  //     axios.get('https://demo.tourcode.online/api/cars',{
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Authorization':`Bearer ${token}`
-  //       }
-  //     })
-  //       .then(response => console.log(response.data))
-  //       .catch(error => console.error(error));
-  // }, [])
 
   return (
     <>
