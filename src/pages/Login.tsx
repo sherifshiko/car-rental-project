@@ -46,8 +46,8 @@ const Login: React.FC = () => {
                         setTimeout(() => {
                             if (values.user_email === 'shefo@shefo.com' && values.password === '123456') {
                                 axios.post('https://demo.tourcode.online/api/auth/login', {
-                                    email: 'shefo@shefo.com',
-                                    password: '123456'
+                                    email: values.user_email,
+                                    password: values.password
                                 }, {
                                     headers: {
                                         'Accept': 'application/json',
@@ -55,7 +55,7 @@ const Login: React.FC = () => {
                                 })
                                     .then(response => {
                                         let token = response.data.token;
-                                        localStorage.setItem("token",token)
+                                        localStorage.setItem("token", token)
                                         navigate('/admin/home');
                                     })
                                     .catch(error => console.error(error));
@@ -70,7 +70,20 @@ const Login: React.FC = () => {
                                     let userPassword = userInformation.password
 
                                     if (values.user_email === userEmail && values.password === userPassword) {
-                                        navigate('/user/home')
+                                        axios.post('https://demo.tourcode.online/api/auth/login', {
+                                            email: 'shefo@shefo.com',
+                                            password: '123456'
+                                        }, {
+                                            headers: {
+                                                'Accept': 'application/json',
+                                            }
+                                        })
+                                            .then(response => {
+                                                let token = response.data.token;
+                                                localStorage.setItem("token", token)
+                                                navigate('/user/home');
+                                            })
+                                            .catch(error => console.error(error));
                                     }
 
                                 }
@@ -87,7 +100,7 @@ const Login: React.FC = () => {
 
 
                             setSubmitting(false)
-                        }, 500);
+                        });
                     }}
                 >
                     {({ values, handleBlur, handleChange, errors, touched, handleSubmit, isSubmitting }) => (

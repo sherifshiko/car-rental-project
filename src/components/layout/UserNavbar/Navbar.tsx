@@ -6,11 +6,15 @@ import { useState } from "react";
 import { motion } from 'framer-motion'
 import ToggleTheme from "./ToggleTheme";
 import { Link } from "react-router";
+import { useNavigate } from "react-router-dom";
+
 
 
 
 const Navbar: React.FC = () => {
     const [openMobile, setOpenMobile] = useState(false);
+    const navigate = useNavigate();
+
 
 
 
@@ -24,8 +28,11 @@ const Navbar: React.FC = () => {
                     <Mobile isOpen={openMobile} />
                 </div>
                 <div className="hidden lg:block absolute right-3">
-                        <ToggleTheme />
-                        <Link to={'/'} className="bg-red-600 rounded-xl p-2 m-2">LogOut</Link>
+                    <ToggleTheme />
+                    <Link to={'/'} onClick={() => {
+                        localStorage.removeItem("token");
+                        navigate('/')
+                    }} className="bg-red-600 rounded-xl p-2 m-2">LogOut</Link>
                 </div>
             </div>
 
