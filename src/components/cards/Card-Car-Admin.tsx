@@ -16,7 +16,7 @@ const CardCarAdmin: React.FC<{ cardData: CarData }> = ({ cardData }) => {
                 <span className="text-red-900">{model}</span>
                 <h3 className="text-green-500">{price_per_day} $</h3>
                 <div className="p-3">
-                    <Link to={`/admin/controlpanel/viewcar/${id}`} className="bg-amber-400 px-3 py-2 rounded-xl">View Car</Link>
+                    <Link to={`/admin/viewcar/${id}`} className="bg-amber-400 px-3 py-2 rounded-xl">View Car</Link>
                 </div>
             </div>
         </div>

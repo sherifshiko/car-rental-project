@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import type { CarData } from "../../interfaces/CarData";
 import { useParams } from 'react-router-dom';
 
-  
- 
+
+
 
 
 const ViewCar: React.FC = () => {
@@ -24,29 +24,48 @@ const ViewCar: React.FC = () => {
             })
             .catch(error => console.error(error));
     }, [])
-    
-    return <>
-        <section>
-        <h2 className="text-center font-bold text-4xl m-5 dark:text-white">View car</h2>
 
-        <div>
-            {carApiData&&(
-                <div className="flex gap-3 container m-auto my-5">
-                    <div>
-                        <img className="h-96" src={carApiData.image} alt={carApiData.name} />
+    return <>
+        <section className="">
+            <h2 className="text-center font-bold text-4xl m-5 dark:text-white">View <span className="text-red-600 uppercase">{carApiData&& carApiData.name}</span> Data </h2>
+
+            <div>
+                {carApiData && (
+                    <div className="container mx-auto my-5 p-5 bg-gray-500 rounded-lg shadow-md flex gap-3">
+                        <div className="w-1/2">
+                            <img className="h-96 w-full object-cover rounded-lg" src={carApiData.image} alt={carApiData.name} />
+                        </div>
+                        <div className="w-1/2">
+                            <h3 className="text-3xl font-bold mb-2 uppercase">{carApiData.name}</h3>
+                            <p className="text-emerald-400 mb-4">{carApiData.description}</p>
+                            <div className="grid grid-cols-2 gap-2">
+                                <div>
+                                    <span className="text-lg font-semibold">السعر اليومي: </span>
+                                    <span className="text-green-500 text-xl font-bold"> $ {carApiData.price_per_day} </span>
+                                </div>
+                                <div>
+                                    <span className="text-lg font-semibold">الموديل: </span>
+                                    <span className="text-emerald-400"> {carApiData.model}</span>
+                                </div>
+                                <div>
+                                    <span className="text-lg font-semibold">السنة: </span>
+                                    <span className="text-emerald-400"> {carApiData.year}</span>
+                                </div>
+                                <div>
+                                    <span className="text-emerald-400"> {carApiData.location}</span>
+                                    <span className="text-lg font-semibold"> : الموقع</span>
+
+                                </div>
+                                <div>
+                                    <span className="text-emerald-400"> {carApiData.brand}</span>
+                                    <span className="text-lg font-semibold"> : العلامة التجارية</span>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="text-2xl font-bold">Car Name : {carApiData.name}</h3>
-                        <p>{carApiData.description}</p>
-                        <span>{carApiData.price_per_day}</span>
-                        <h4>{carApiData.year}</h4>
-                        <h4>{carApiData.model}</h4>
-                        <h4>{carApiData.location}</h4>
-                        <h4>{carApiData.brand}</h4>
-                    </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
 
 
         </section>

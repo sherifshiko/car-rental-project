@@ -16,31 +16,11 @@ const adminAppRoutes:routesTpes []= [
         href:'controlpanel',
     }
     ,
-    {
-        title:'Auto Management',
-        href:'automanagement',
-    }
-    ,
+
     {
         title:'Booking Management',
         href:'bookingmanagement',
     }
-    ,
-    {
-        title:'Maintenance Department',
-        href:'maintenancedepartment',
-    }
-    ,
-    {
-        title:'Customer Management',
-        href:'customermanagement',
-    }
-    ,
-    {
-        title:'Reports',
-        href:'reports',
-    }
-    
     
 ]
 

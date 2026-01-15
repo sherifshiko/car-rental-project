@@ -28,16 +28,17 @@ const App: React.FC = () => {
         <Route path="booking" element={<Booking />} />
         <Route path="search" element={<Search />} />
         <Route path="viewcar/:id" element={<ViewCar />} />
-
       </Route>
+
+
       <Route path="/admin" element={<AdminLayOut />} >
         <Route path="home" element={<HomeAdmin />} />
         <Route path="controlpanel" element={<ControlPanel />}>
           <Route path="add-car" element={<AddCar />} />
           <Route path="delete-car" element={<DeleteCar />} />
           <Route path="update-car" element={<UpdateCar />} />
-          <Route path="viewcar/:id" element={<ViewCar />} />
         </Route>
+        <Route path="viewcar/:id" element={<ViewCar />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
