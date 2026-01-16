@@ -44,64 +44,35 @@ const Login: React.FC = () => {
                     onSubmit={(values, { setSubmitting }) => {
                         setNotFound('');
                         setTimeout(() => {
-                            if (values.user_email === 'shefo@shefo.com' && values.password === '123456') {
-                                axios.post('https://demo.tourcode.online/api/auth/login', {
-                                    email: values.user_email,
-                                    password: values.password
-                                }, {
-                                    headers: {
-                                        'Accept': 'application/json',
+                            axios.post('https://demo.tourcode.online/api/auth/login', {
+                                email: values.user_email,
+                                password: values.password
+                            }, {
+                                headers: {
+                                    'Accept': 'application/json',
+                                }
+                            })
+                                .then(response => {
+                                    let token = response.data.token;
+                                    localStorage.setItem("token", token)
+                                    if (values.user_email === 'shefo@shefo.com' && values.password === '123456') {
+                                        navigate('/admin/home');
+                                    } else {
+                                        navigate('/user/home');
                                     }
                                 })
-                                    .then(response => {
-                                        let token = response.data.token;
-                                        localStorage.setItem("token", token)
-                                        navigate('/admin/home');
-                                    })
-                                    .catch(error => console.error(error));
-
-                            } else {
-
-                                let allInformations = localStorage.getItem('userInformation') || '[]';
-
-                                for (const userInformation of JSON.parse(allInformations)) {
-
-                                    let userEmail = userInformation.user_email
-                                    let userPassword = userInformation.password
-
-                                    if (values.user_email === userEmail && values.password === userPassword) {
-                                        axios.post('https://demo.tourcode.online/api/auth/login', {
-                                            email: 'shefo@shefo.com',
-                                            password: '123456'
-                                        }, {
-                                            headers: {
-                                                'Accept': 'application/json',
-                                            }
-                                        })
-                                            .then(response => {
-                                                let token = response.data.token;
-                                                localStorage.setItem("token", token)
-                                                navigate('/user/home');
-                                            })
-                                            .catch(error => console.error(error));
+                                .catch(error => {
+                                    console.error(error.response.data)
+                                    if (error.response.data.message == 'Invalid credentials') {
+                                        setNotFound('the email or password is not correct ')
                                     }
-
-                                }
-
-                                let email = localStorage.getItem('email')
-                                let password = localStorage.getItem('password')
-                                if (JSON.stringify(values.user_email) === email && JSON.stringify(values.password) === password) {
-                                    alert('hello user')
-                                } else {
-                                    setNotFound('the email or password is not correct ')
-                                }
-                            }
-
-
-
-                            setSubmitting(false)
+                                })
+                                .finally(() => {
+                                    setSubmitting(false)
+                                });
                         });
                     }}
+
                 >
                     {({ values, handleBlur, handleChange, errors, touched, handleSubmit, isSubmitting }) => (
                         <form onSubmit={handleSubmit}>
@@ -146,3 +117,56 @@ const Login: React.FC = () => {
 }
 
 export default Login;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// } else {
+
+//     let allInformations = localStorage.getItem('userInformation') || '[]';
+
+//     for (const userInformation of JSON.parse(allInformations)) {
+
+//         let userEmail = userInformation.user_email
+//         let userPassword = userInformation.password
+
+//         if (values.user_email === userEmail && values.password === userPassword) {
+//             axios.post('https://demo.tourcode.online/api/auth/login', {
+//                 email: 'shefo@shefo.com',
+//                 password: '123456'
+//             }, {
+//                 headers: {
+//                     'Accept': 'application/json',
+//                 }
+//             })
+//                 .then(response => {
+//                     let token = response.data.token;
+//                     localStorage.setItem("token", token)
+//                     navigate('/user/home');
+//                 })
+//                 .catch(error => console.error(error));
+//         }
+
+//     }
+
+//     let email = localStorage.getItem('email')
+//     let password = localStorage.getItem('password')
+//     if (JSON.stringify(values.user_email) === email && JSON.stringify(values.password) === password) {
+//         alert('hello user')
+//     } else {
+//         setNotFound('the email or password is not correct ')
+//     }
+// }
+
+
