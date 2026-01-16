@@ -1,10 +1,10 @@
 
 import { Formik } from "formik";
 import { Moon, Sun } from "lucide-react";
-import { useState, useEffect } from "react";
 import * as Yup from 'yup'
 import { useTheme } from "../hooks/useTheme";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface FormType {
     user_name: string,
@@ -13,17 +13,9 @@ interface FormType {
 }
 
 const SignIn: React.FC = () => {
-    const [userInformation, setUserInformation] = useState<FormType[]>([]);
     const { theme, toggleTheme } = useTheme()
     const navigate = useNavigate();
 
-
-    useEffect(() => {
-        const storedUsers = localStorage.getItem('userInformation');
-        if (storedUsers) {
-            setUserInformation(JSON.parse(storedUsers));
-        }
-    }, []);
 
     const initValues: FormType = {
         user_name: '',
@@ -38,20 +30,32 @@ const SignIn: React.FC = () => {
     })
 
     const handleAddNewUser = (newvalues: FormType) => {
-        const existingUserEamil = userInformation.find(user => (user.user_email === newvalues.user_email));
-        const existingUserName = userInformation.find(user => user.user_name === newvalues.user_name)
-        if (existingUserEamil && existingUserName) {
-            alert('Email and Name already exists');
-        } else if (existingUserEamil) {
-            alert('Email already exists');
-        } else if (existingUserName) {
-            alert('Name already exists');
-        } else {
-            const updatedUsers = [...userInformation, newvalues];
-            setUserInformation(updatedUsers);
-            localStorage.setItem('userInformation', JSON.stringify(updatedUsers));
-            navigate('/user/home')
-        }
+        axios.post('https://demo.tourcode.online/api/auth/register', {
+            name: newvalues.user_name,
+            email: newvalues.user_email,
+            password: newvalues.password
+        }, {
+            headers: {
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => {
+                let userName = response.data.user.name
+                let userId = response.data.user.id
+                let token = response.data.token;
+                localStorage.setItem("token", token)
+                localStorage.setItem("userName", userName)
+                localStorage.setItem("userId", userId)
+                navigate('/user/home')
+            })
+            .catch(error => {
+                if (error.response && error.response.data && error.response.data.message) {
+                    console.error(error.response.data.message)
+                    alert(error.response.data.message)
+                } else {
+                    alert('Something went wrong')
+                }
+            })
     }
 
     return (

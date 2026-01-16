@@ -29,7 +29,7 @@ const DeleteCar: React.FC = () => {
                 'Authorization': `Bearer ${token}`
             }
         })
-            .then(response => {
+            .then(() => {
                 setListCars(listCars.filter(car => car.id !== id));
                 setSelectedCar(null);
             })
