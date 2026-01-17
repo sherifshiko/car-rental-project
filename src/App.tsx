@@ -15,10 +15,11 @@ import DeleteCar from "./components/cars-control/DeleteCar";
 import UpdateCar from "./components/cars-control/UpdateCar";
 import ViewCar from "./components/cards/ViewCar";
 import HomeAdmin from "./pages/HomeAdmin";
+import UserPage from "./pages/UserPage";
 
 const App: React.FC = () => {
-  return (
 
+  return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signin" element={<SignIn />} />
@@ -28,9 +29,8 @@ const App: React.FC = () => {
         <Route path="booking" element={<Booking />} />
         <Route path="search" element={<Search />} />
         <Route path="viewcar/:id" element={<ViewCar />} />
+        <Route path="page/:username" element={<UserPage />} />
       </Route>
-
-
       <Route path="/admin" element={<AdminLayOut />} >
         <Route path="home" element={<HomeAdmin />} />
         <Route path="controlpanel" element={<ControlPanel />}>

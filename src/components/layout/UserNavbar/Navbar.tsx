@@ -31,6 +31,9 @@ const Navbar: React.FC = () => {
                     <ToggleTheme />
                     <Link to={'/'} onClick={() => {
                         localStorage.removeItem("token");
+                        localStorage.removeItem("userName");
+                        localStorage.removeItem("userId");
+                        localStorage.removeItem("storedFavorites");
                         navigate('/')
                     }} className="bg-red-600 rounded-xl p-2 m-2">LogOut</Link>
                 </div>

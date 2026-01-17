@@ -53,7 +53,11 @@ const Login: React.FC = () => {
                                 }
                             })
                                 .then(response => {
+                                    let userName = response.data.user.name
+                                    let userId = response.data.user.id
                                     let token = response.data.token;
+                                    localStorage.setItem("userName", userName)
+                                    localStorage.setItem("userId", userId)
                                     localStorage.setItem("token", token)
                                     if (values.user_email === 'shefo@shefo.com' && values.password === '123456') {
                                         navigate('/admin/home');
