@@ -1,19 +1,14 @@
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import type { CarData } from "../interfaces/CarData";
 import axios from "axios";
 
-
-const ListCarsContext = createContext<{
-  listCars: CarData[];
-  fetchCars: () => void;
-}>({
+const ListCarsContext = createContext<{ listCars: CarData[]; fetchCars: () => void; }>({
   listCars: [],
   fetchCars: () => {}
 });
 
-
-const ListCarsContextProvider: React.FC<{children:React.ReactNode}> = ({children}) => {
+const ListCarsContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [listCars, setListCars] = useState<CarData[]>([]);
 
   const fetchCars = async () => {
@@ -30,10 +25,6 @@ const ListCarsContextProvider: React.FC<{children:React.ReactNode}> = ({children
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    fetchCars();
-  }, []);
 
   return (
     <ListCarsContext.Provider value={{ listCars, fetchCars }}>

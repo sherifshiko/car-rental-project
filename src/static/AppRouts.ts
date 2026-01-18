@@ -13,14 +13,6 @@ const getAppRouts = () => {
     {
       title: `Hello: ${userName}`,
       href: `page/${userName}`,
-    },
-    {
-      title: 'Booking',
-      href: 'booking',
-    },
-    {
-      title: '',
-      href: 'page:',
     }
   ]
 }
