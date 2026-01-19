@@ -19,6 +19,8 @@ import UserPage from "./pages/UserPage";
 import BookingManagement from "./pages/BookingManagement";
 import ListAllBookings from "./components/Booking/ListAllBookings";
 import { UserLiksContextProvider } from "./context/userLiks";
+import DeleteBooking from "./components/Booking/DeleteBooking";
+import UpdateBooking from "./components/Booking/UpdateBooking";
 
 const App: React.FC = () => {
   return (
@@ -44,6 +46,8 @@ const App: React.FC = () => {
           <Route path="viewcar/:id" element={<ViewCar />} />
           <Route path="bookingmanagement" element={<BookingManagement />}>
             <Route path="list-all-bookings" element={<ListAllBookings />} />
+            <Route path="delete-booking" element={<DeleteBooking />} />
+            <Route path="update-booking" element={<UpdateBooking />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

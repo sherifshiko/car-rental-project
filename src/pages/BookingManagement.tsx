@@ -15,10 +15,8 @@ const BookingManagement: React.FC = () => {
             <div className="flex justify-center">
                 <ul className="flex gap-3">
                     <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={'list-all-bookings'}>List all bookings</Link></li>
-                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={''}>Get booking details</Link></li>
-                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={''}>Create a booking</Link></li>
-                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={''}>Update booking</Link></li>
-                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={''}>Delete booking</Link></li>
+                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={'update-booking'}>Update booking</Link></li>
+                    <li><Link className=" bg-cyan-500 px-3 py-2 rounded-xl cursor-pointer" to={'delete-booking'}>Delete booking</Link></li>
                 </ul>
             </div>
 
