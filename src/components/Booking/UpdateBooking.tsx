@@ -68,7 +68,6 @@ const UpdateBooking: React.FC = () => {
         setListBookings(listBookings.map(booking => booking.id === selectedBooking?.id ? response.data : booking));
         alert('Booking updated successfully!')
         setSelectedBooking(null)
-        console.log(response);
       })
       .catch(error =>{
         alert(error.response.data.message);
