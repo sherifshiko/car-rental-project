@@ -70,7 +70,9 @@ const UpdateBooking: React.FC = () => {
         setSelectedBooking(null)
         console.log(response);
       })
-      .catch(error => console.error(error));
+      .catch(error =>{
+        alert(error.response.data.message);
+      })
   }
 
   return (
